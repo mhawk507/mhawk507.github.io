@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet Patel - Data Scientist & Software Engineer</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #667eea;
+        --secondary-color: #764ba2;
+        --accent-color: #f093fb;
+        --text-dark: #2d3748;
+        --text-light: #4a5568;
+        --bg-light: #f7fafc;
+        --white: #ffffff;
+        --gradient: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        --card-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+        --section-bg: #ffffff;
+        --tag-bg: #e2e8f0;
+        --input-bg: #f7fafc;
+        --border-color: #cbd5e0;
+        --text-color: #2d3748;
+        --secondary-text: #718096;
+        --primary-bg: #667eea;
+        --card-bg: #f7fafc;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
+
+      /* Header & Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: var(--gradient);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        color: white;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero-text .subtitle {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease 0.2s both;
+      }
+
+      .hero-text p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        animation: fadeInUp 1s ease 0.4s both;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        animation: fadeInUp 1s ease 0.6s both;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: white;
+        color: var(--primary-color);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-outline:hover {
+        background: white;
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeInRight 1s ease 0.8s both;
+      }
+
+      .floating-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .social-links a:hover {
+        transform: scale(1.2);
+      }
+
+      /* Sections */
+      section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-title p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
+
+      /* About Section */
+      .about {
+        background: var(--bg-light);
+      }
+
+      .about-content {
+        display: grid;
+        /* grid-template-columns: 1fr 2fr; */
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-light);
+        text-align: justify;
+      }
+
+      /* Technologies Section */
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .tech-category {
+        background: var(--bg-light);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease;
+      }
+
+      .tech-category:hover {
+        transform: translateY(-5px);
+      }
+
+      .tech-category h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tech-tag {
+        background: white;
+        color: var(--text-dark);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .tech-tag:hover {
+        background: var(--gradient);
+        color: white;
+        transform: scale(1.05);
+      }
+
+      /* Experience Section */
+      .experience {
+        background: var(--bg-light);
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        background: var(--gradient);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1.5px;
+      }
+
+      .timeline-item {
+        padding: 2rem 0;
+        position: relative;
+        width: 50%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: 2rem;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 2rem;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--card-shadow);
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-content:hover {
+        transform: scale(1.02);
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: var(--primary-color);
+        border: 4px solid white;
+        top: 50%;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd)::after {
+        right: -11px;
+      }
+
+      .timeline-item:nth-child(even)::after {
+        left: -11px;
+      }
+
+      .job-title {
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .company {
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+      }
+
+      .duration {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      .achievements {
+        list-style: none;
+      }
+
+      .achievements li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .achievements li::before {
+        content: "▶";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .project-header {
+        background: var(--gradient);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .project-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-content {
+        padding: 2rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .project-tech .tech-tag {
+        background: var(--primary-color);
+        color: white;
+        font-size: 0.8rem;
+      }
+
+      .project-links {
+        
+
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        justify-content: center;
+      }
+
+      .project-links a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .project-links a:hover {
+        color: var(--secondary-color);
+      }
+
+      /* Education Section */
+      .education {
+        background: var(--bg-light);
+      }
+
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .education-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .education-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .degree {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .university {
+        font-size: 1.2rem;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .duration {
+        font-size: 1rem;
+        color: var(--secondary-text);
+        margin-bottom: 0.5rem;
+      }
+
+      .gpa {
+        font-size: 1rem;
+        color: var(--text-color);
+        margin-bottom: 1rem;
+      }
+
+      .course-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .course-tag {
+        background: var(--tag-bg);
+        color: var(--text-color);
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: var(--section-bg);
+        padding: 5rem 0;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        margin-top: 2rem;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-icon i {
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .contact-item a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      .contact-item a:hover {
+        color: var(--primary-color);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        background: var(--input-bg);
+        color: var(--text-color);
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2rem;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .timeline::after {
+          left: 31px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .timeline-item:nth-child(even) {
+          left: 0%;
+        }
+
+        .timeline-item::after {
+          left: 22px;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .contact-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--gradient);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">Meet Patel</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Meet Patel</h1>
+          <p class="subtitle">Data Scientist & Software Engineer</p>
+          <!-- <p>
+            A data-driven professional with 1.5 years of experience in software
+            engineering and data analytics, specializing in Python development
+            and machine learning. Ready to drive insights across industries with
+            expertise in API development and data visualization.
+          </p> -->
+          <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fas fa-code"></i> View Projects
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fas fa-envelope"></i> Get In Touch
+            </a>
+          </div>
+          <div class="social-links">
+            <a href="mailto:meetpatel5720@gmail.com" title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/meet-patel-507/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/mhawk507" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="floating-card">
+            <div style="text-align: center">
+              <i
+                class="fas fa-chart-line"
+                style="font-size: 3rem; color: white; margin-bottom: 1rem"
+              ></i>
+              <h3 style="color: white; margin-bottom: 0.5rem">
+                Data-Driven Solutions
+              </h3>
+              <p style="color: rgba(255, 255, 255, 0.8)">
+                Machine Learning • APIs • Analytics
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+         
+        </div>
+        <div class="about-content">
+  <div class="about-text">
+            <p>
+              I'm a results-driven professional with a Master's in Health Data
+              Analytics from Monash University and hands-on experience in
+              fintech. My expertise spans from building scalable REST APIs that
+              serve hundreds of thousands of users to developing machine
+              learning models that predict critical healthcare outcomes.
+            </p>
+
+            <p>
+              I'm passionate about creating robust, data-driven solutions that
+              make a real impact, whether it's optimizing credit card processing
+              systems or predicting hip fracture mortality to improve patient
+              care.
+            </p>
+
+            <p>
+              I thrive on tackling complex challenges, from implementing
+              comprehensive ETL pipelines to building interactive data
+              visualizations that tell compelling stories from massive datasets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="technologies">
+      <div class="container">
+        <div class="section-title">
+          <h2>Technologies & Skills</h2>
+          <p>Tools and technologies I work with</p>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-category">
+            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">R</span>
+              <span class="tech-tag">C</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="tech-category">
+            <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
+            <div class="tech-tags">
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">GRPC</span>
+              <span class="tech-tag">R Shiny</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">scikit-learn</span>
+              <span class="tech-tag">pandas</span>
+              <span class="tech-tag">NumPy</span>
+            </div>
+          </div>
+          <div class="tech-category">
+            <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+            <div class="tech-tags">
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Keras</span>
+              <span class="tech-tag">NLTK</span>
+              <span class="tech-tag">Matplotlib</span>
+              <span class="tech-tag">Seaborn</span>
+            </div>
+          </div>
+          <div class="tech-category">
+            <h3><i class="fas fa-database"></i> Databases & Tools</h3>
+            <div class="tech-tags">
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Airflow</span>
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">Power BI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+      <div class="container">
+        <div class="section-title">
+          <h2>Professional Experience</h2>
+          <p>My journey in software engineering and data analytics</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="job-title">Member of Technical Staff</div>
+              <div class="company">Redcarpet Tech Pvt. Ltd.</div>
+              <span class="duration">May 2022 - Oct 2022</span>
+              <ul class="achievements">
+                <li>
+                  Engineered REST APIs for core credit card products using
+                  Python/Flask, reducing API latency by 10% and enabling
+                  real-time processing for 200K+ monthly active users
+                </li>
+                <li>
+                  Led end-to-end development of 5 partner-specific credit
+                  products with custom user flows and risk models
+                </li>
+                <li>
+                  Achieved 95% unit test coverage using pytest, significantly
+                  reducing post-deployment defects
+                </li>
+                <li>
+                  Built bulk APIs for operational automation processing 1M+
+                  monthly transactions
+                </li>
+                <li>
+                  Integrated 5 third-party services ensuring PCI-DSS compliance
+                  and reducing transaction errors by 15%
+                </li>
+                <li>
+                  Leveraged PostgreSQL for efficient data management of 5M+
+                  records with Airflow DAGs
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="job-title">Software Engineer Intern</div>
+              <div class="company">Redcarpet Tech Pvt. Ltd.</div>
+              <span class="duration">Jan 2022 - Apr 2022</span>
+              <ul class="achievements">
+                <li>
+                  Engineered critical APIs for recovery and collection system,
+                  enhancing operational efficiency by 5%
+                </li>
+                <li>
+                  Developed robust migration scripts ensuring 99.9% data
+                  integrity during platform transition
+                </li>
+                <li>
+                  Implemented comprehensive test suites achieving 95% code
+                  coverage
+                </li>
+                <li>
+                  Created mobile-optimized APIs improving response times by 20%
+                  for operations team
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="job-title">Software Engineer Intern</div>
+              <div class="company">Seedominc Inc.</div>
+              <span class="duration">Aug 2020 – May 2021</span>
+              <ul class="achievements">
+                <li>
+                  Developed and maintained a user-friendly web interface for
+                  managing cancer diagnostics data, improving accessibility and
+                  ease of use for medical professionals.
+                </li>
+                <li>
+                  Designed and optimized a robust, scalable database schema to
+                  ensure efficient storage and retrieval of cancer diagnostics
+                  data.
+                </li>
+                <li>
+                  Performed regular maintenance, bug fixes, and software updates
+                  to ensure the stability, performance, and security of the web
+                  interface.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Projects</h2>
+          <p>Showcasing my work in data science and software development</p>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <div class="project-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h3>Hip Fracture Mortality Prediction</h3>
+            </div>
+            <div class="project-content">
+              <li>
+                Developed multiclass classification models using supervised
+                learning techniques in scikit-learn to predict mortality at
+                intervals of 10, 30, and 90 days after hip fracture, achieving
+                73.6% microavg precision using the VOTOR Registry dataset.
+              </li>
+              <li>
+                Conducted feature engineering and leveraged SHAP (SHapley
+                Additive exPlanations) values for model interpretability and
+                explainability, translating complex data into actionable
+                insights for healthcare decision-making.
+              </li>
+              <li>
+                Pre-processed and cleaned a large clinical data set of 12,000+
+                patients in a secured environment using Pandas, ensuring data
+                quality, integrity, and robustness for accurate analysis.
+              </li>
+              <li>
+                Applied data exploration and visualization techniques using
+                Seaborn to communicate machine learning insights to clinical
+                stakeholders through tailored reports, demonstrating strong data
+                storytelling and presentation skills to diverse audiences.
+              </li>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-header">
+              <div class="project-icon">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <h3>
+                Data Visualization Project: Health Behaviors and Chronic Disease
+                Trends in Demographics in the USA
+              </h3>
+            </div>
+            <div class="project-content">
+              <li>
+                Engineered an interactive data visualization dashboard using
+                D3.js, analyzing trends across 250,000+ records of chronic
+                diseases, mental health, and lifestyle factors, with real-time
+                filtering and synchronized animations to enhance user engagement
+                and data exploration capabilities.
+              </li>
+              <li>
+                Integrated geospatial data using Leaflet and Mapbox, enabling
+                state-level health trend analysis with demographic-specific
+                insights.
+              </li>
+              <li>
+                Optimized large dataset processing (257K rows x 10 columns)
+                using Apache Arrow and parquet-wasm, reducing load times
+              </li>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/mhawk507/US_Chronic_disease_Analysis"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a
+                href="https://us-chronic-disease-analysis.vercel.app/"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+      <div class="container">
+        <div class="section-title">
+          <h2>Education</h2>
+          <p>Academic Background and Achievements</p>
+        </div>
+        <div class="education-grid">
+          <div class="education-card">
+            <div class="degree">Master of Health Data Analytics</div>
+            <div class="university">Monash University</div>
+            <div class="duration">Feb 2023 – Dec 2024</div>
+            <div class="gpa">GPA: 3.6/4.0</div>
+            <div class="coursework">
+              <h4>Relevant Coursework</h4>
+              <div class="course-list">
+                <span class="course-tag">Introduction to Machine Learning</span>
+                <span class="course-tag"
+                  >Data Analysis for Semi-structured Data</span
+                >
+                <span class="course-tag"
+                  >Data Exploration and Visualization</span
+                >
+                <span class="course-tag">Data Wrangling</span>
+                <span class="course-tag"
+                  >Principles of Statistical Inference</span
+                >
+                <span class="course-tag">Deep Learning</span>
+                <span class="course-tag"
+                  >Regression Modelling For Biostatistics</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="education-card">
+            <div class="degree">Bachelor of Computer Engineering</div>
+            <div class="university">Gujarat Technological University</div>
+            <div class="duration">July 2018 - Jun 2022</div>
+            <div class="gpa">GPA: 8.88/10</div>
+            <div class="coursework">
+              <h4>Relevant Coursework</h4>
+              <div class="course-list">
+                <span class="course-tag">Big Data Analytics</span>
+                <span class="course-tag">Data Mining</span>
+                <span class="course-tag"
+                  >Analysis and Design of Algorithms</span
+                >
+                <span class="course-tag">Python for Data Science</span>
+                <span class="course-tag">Database Management Systems</span>
+                <span class="course-tag">Probability and Statistics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Get in Touch</h2>
+          <p>Let's connect and discuss opportunities</p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <a href="mailto:meetpatel5720@gmail.com"
+                >meetpatel5720@gmail.com</a
+              >
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/meet-patel-507/"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <a href="https://github.com/mhawk507" target="_blank">GitHub</a>
+            </div>
+          </div>
+
+          <form
+            class="contact-form"
+            action="https://formspree.io/f/xgvydnpj"
+            method="POST"
+          >
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
